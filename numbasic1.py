@@ -15,7 +15,7 @@ print(c)
 d = np.array([1,2,4],dtype = float) # dtype se convert ho jate h ..... agar float ke jagah bool likha hota to output hota array([true , true , true]) coz non zero saari values ko python true ki tarah treat krta h
 print(d)
 # range in numpy as arange
-e = np.arange(1,11,2)
+e = np.arange(1,11,2) # [1,3,5,7,9] just like for loop 
 print(e)
 
 # reshape array
@@ -92,3 +92,22 @@ np.max(a1,axis = 0) # column wise
 # jaise yeh rows and columns max ke liye kiya aese hi min , sum , prod ke liye bhi kr sakte h
 
 # till 1:03:55
+
+# aese hi kuch or mathematical function h
+z = np.var(a1,axis = 1) # saari rows ka variance nikal lega
+print(z)
+np.sin(a1) # saare a1 ke elements ka sin le lega jaise agar element hua x1 so sin(x1)
+
+a2 = np.arange(12).reshape(3,4)
+a3 = np.arange(12,24).reshape(4,3)
+np.dot(a2,a3) # isse dot product nikal jayega .....a2 * a3
+
+np.exp(a1) # isse jo jo element h wo power ho jayenge jaise if an element is x so output for that is e^x
+
+np.ceil(np.random.random((2,3))*100)
+
+# round/floor/ceil
+
+print(np.ceil(np.random.random((2,3))*100)) # so isme 2 rows and 3 columns pe random value generate hua and usko phir round off kiya 100 se so 100 ke andar ki value aa gyi and then ceil use kiye jisse us decimal value ke sabse nazdeek integer value ho jayega
+
+
