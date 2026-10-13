@@ -204,7 +204,7 @@ np.hsplit(a4,2) # a4 ko 2 horizonatal parts me todna
 # 4  5         6  7
 # 8  9        10 11
 
-np.vsplit(a5,3) # a5 ko vertically 3 parts me todna 
+np.vsplit(a5,3) # a5 ko vertically 3 parts me todna
 
 # 12 13 14 15
 # 16 17 18 19

@@ -15,7 +15,7 @@ print(c)
 d = np.array([1,2,4],dtype = float) # dtype se convert ho jate h ..... agar float ke jagah bool likha hota to output hota array([true , true , true]) coz non zero saari values ko python true ki tarah treat krta h
 print(d)
 # range in numpy as arange
-e = np.arange(1,11,2) # [1,3,5,7,9] just like for loop 
+e = np.arange(1,11,2) # [1,3,5,7,9] just like for loop
 print(e)
 
 # reshape array
@@ -111,3 +111,13 @@ np.ceil(np.random.random((2,3))*100)
 print(np.ceil(np.random.random((2,3))*100)) # so isme 2 rows and 3 columns pe random value generate hua and usko phir round off kiya 100 se so 100 ke andar ki value aa gyi and then ceil use kiye jisse us decimal value ke sabse nazdeek integer value ho jayega
 
 
+
+# sigmoid graph plotting
+import matplotlib.pyplot as plt
+def sigmoid(array):
+  return 1/(1+np.exp(-array))
+
+a = np.linspace(-10,10,100)
+b = sigmoid(a)
+plt.plot(a,b)
+plt.savefig("graphsigmoid")
