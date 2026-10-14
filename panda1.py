@@ -385,4 +385,140 @@ print(movies)
 # 1920 (film)                   Rajniesh Duggall
 # Name: lead, Length: 1500, dtype: str
 
-1:35:34  
+# SERIES WITH PYTHON FUNCTIONALITIES
+
+# len/type/dir/sorted/max/min
+print(len(subs)) # 365 items in subs series
+print(type(subs)) # <class 'pandas.core.series.Series'>
+print(dir(subs)) # series ke saare atributes and methods dikhega
+print(sorted(subs)) # ascending me sorted subsriber gained
+print(min(subs)) # max subs
+print(max(subs)) # min subs gained
+
+
+# TYPE CONVERSION
+print(marks_series)
+# maths       67
+# english    100
+# science     89
+# hindi      100
+# sst         22
+# Name: nitish ke marks, dtype: int64
+
+# if i want to convert this into list  list
+print(list(marks_series)) #[67, 100, 89, 100, 22].   values list me store ho jayengi
+print(dict(marks_series))
+# {'maths': np.int64(67), 'english': np.int64(100), 'science': np.int64(89), 'hindi': np.int64(100), 'sst': np.int64(22)}
+
+
+# membership operator
+
+'2 States (2014 film)' in movies # yeh sirf keys pe kaam krta h na ki values pe
+
+# True
+
+# for values
+'Alia bhatt' in movies.values
+# true
+
+
+# LOOPING
+for i in movies:
+    print(i)
+# saari values print ho jayegi keys nhi hogi
+
+# for index printing
+for i in movies.index:
+    print(i)
+# saari keys print ho jayegi
+
+
+# ARITHMETIC OPERATORS (broadcasting)
+
+
+# we want har subject me 100 se kitne kam marks aaye
+print(100 - marks_series) # har subject me 100 lane ke liye kitne number chaiye
+# maths      33
+# english     0
+# science    11
+# hindi       0
+# sst        78
+# Name: nitish ke marks, dtype: int64
+
+
+
+# RELATIONAL OPERATORS
+
+# kitne matches me virat ne 5 se zyada score kiya
+print(vk >= 50)
+# match_no
+# 1      False
+# 2      False
+# 3      False
+# 4      False
+# 5      False
+#        ...
+# 211    False
+# 212    False
+# 213     True
+# 214    False
+# 215    False
+# Name: runs, Length: 215, dtype: bool
+
+
+# Boolean Indexing on Series
+
+# Find no of 50's and 100's scored by kohli
+vk[vk >= 50].size # true vali values vk me store ho gyi and return krega
+# 50
+
+# find number of ducks
+vk[vk == 0].size
+# 9
+
+# Count number of day when I had more than 200 subs a day
+subs[subs > 200].size
+# 59
+
+
+# find actors who have done more than 20 movies
+num_movies = movies.value_counts() # har actor ke number of moveies count ho jayega and num_movies me store ho jayega
+
+print(num_movies[num_movies > 20])
+# lead
+# Akshay Kumar        48
+# Amitabh Bachchan    45
+# Ajay Devgn          38
+# Salman Khan         31
+# Sanjay Dutt         26
+# Shah Rukh Khan      22
+# Emraan Hashmi       21
+# Name: count, dtype: int64
+
+
+
+# PLOTTING GRAPH ON SERIES
+
+# suppose i want to plot a graph of subscriber gained per day graph
+
+import matplotlib.pyplot as plt
+subs.plot()
+plt.savefig("seriesgraph")
+# ban gya grpah
+
+movies.value_counts().head(20).plot(kind='pie')
+plt.savefig("seriespie")
+# movies.value_counts series ke head ke 20 element ka pie graph ban gya
+
+#Some Important Series Methods
+
+# astype
+# between
+# clip
+# drop_duplicates
+# isnull
+# dropna
+# fillna
+# isin
+# apply
+# copy
