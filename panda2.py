@@ -348,8 +348,55 @@ students.loc['nitish':'rishabh':2] # 2 2 jump krega
 
 # iloc and loc me difference yahi h ki iloc me last element excluded and loc me included
 
-1:06:12
+# SELECTING BOTH ROWS AND COLUMNS
+# rows and column dono saath me fetch
+
+# suppose fetch 3 movies and pahle 2 columns ka data chaiye bas
+# using iloc
+print(movies.iloc[0:3,0:2])
+#                                 title_x    imdb_id
+# 0              Uri: The Surgical Strike  tt8291224
+# 1                         Battalion 609  tt9472208
+# 2  The Accidental Prime Minister (film)  tt6986710
+
+# using loc
+print(movies.loc[0:3,'title_x':'imdb_id']) # isse bhi wahi aayega and label kaa naam hi 0 1 2 h
+
+# jab bhi tum dataframe banaoge uska index kuch bhi ho but internally uska indexing ho jata 0 1 2 jo iloc ke through access kr pate h
 
 
+# FILTERING A DATAFRAME -> VERY VERY IMPORTANT
 
+# 1.) FIND ALL THE FINAL WINNERS #  IPL ke  har saal ke winner dena h
+masks = ipl['MatchNumber'] == 'Final'
+new_df = ipl[masks]
+print(new_df[['Season','WinningTeam']])
 
+# method -2
+ipl[ipl['MatchNumber'] == 'Final'][['Season','WinningTeam']] # ek line me puracode
+
+# 2.) how many super over finishes have occured
+ipl[ipl['SuperOver'] == 'Y'].shape[0] # coz shape column and rows dono bata rha
+
+# 3.) how many matches has csk won in kolkata
+# ipl[ipl['WinningTeam','City'] == ['CSK','kolkata']].shape[0] # wrong coz do column ko ek saaath compare nhi kr sakte
+
+print(ipl[(ipl['WinningTeam'] == 'Chennai Super Kings') & (ipl['City']=='Kolkata')
+].shape[0])
+# 5
+
+# 4.) toss winner is match winner in percentage
+
+print((ipl[ipl['TossWinner'] == ipl['WinningTeam']].shape[0]/ipl.shape[0])*100) # 51
+
+# 5.) # movies with rating higher than 8 and votes>10000
+movies[(movies['imdb_rating'] > 8.5) & (movies['imdb_votes'] > 10000)].shape[0]
+
+# 6.) # Action movies with rating higher than 7.5
+# yeh tricky h coz ek movie ke genre 3 bhi h jaise Action/Drama/Musical
+# so hume split krna padega  string me split
+masks1 = movies['genres'].str.split('|').apply(lambda x : 'Action' in x) # apply condition check ke liye hota h and return true or false krta h
+masks2 = movies['imdb_rating'] > 7.5
+print(movies[masks1 & masks2])
+
+1:42:35
